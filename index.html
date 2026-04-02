@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鸟类认知学习游戏 - 小林带你认鸟</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- 游戏标题 -->
+        <header class="game-header">
+            <h1><i class="fas fa-dove"></i> 鸟类认知学习游戏</h1>
+            <p class="subtitle">小林带你认识各种美丽的鸟儿！🐦</p>
+        </header>
+
+        <!-- 游戏信息栏 -->
+        <div class="game-info">
+            <div class="score-board">
+                <div class="score-item">
+                    <span class="score-label">得分：</span>
+                    <span id="score" class="score-value">0</span>
+                </div>
+                <div class="score-item">
+                    <span class="score-label">关卡：</span>
+                    <span id="level" class="score-value">1</span>
+                </div>
+                <div class="score-item">
+                    <span class="score-label">进度：</span>
+                    <span id="progress" class="score-value">0/10</span>
+                </div>
+            </div>
+            <div class="time-board">
+                <i class="fas fa-clock"></i>
+                <span id="timer">60</span>秒
+            </div>
+        </div>
+
+        <!-- 游戏主区域 -->
+        <main class="game-area">
+            <!-- 鸟类图片展示 -->
+            <div class="bird-display">
+                <div class="bird-image-container">
+                    <img id="bird-image" src="https://images.unsplash.com/photo-1551085254-e96b210db58a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="鸟类图片">
+                    <div class="bird-name" id="bird-name">麻雀</div>
+                </div>
+                <div class="bird-description" id="bird-description">
+                    正在加载鸟类信息...
+                </div>
+            </div>
+
+            <!-- 选择题区域 -->
+            <div class="quiz-area">
+                <h3><i class="fas fa-question-circle"></i> 这是什么鸟？</h3>
+                <div class="options-container">
+                    <button class="option-btn" data-index="0">选项1</button>
+                    <button class="option-btn" data-index="1">选项2</button>
+                    <button class="option-btn" data-index="2">选项3</button>
+                    <button class="option-btn" data-index="3">选项4</button>
+                </div>
+
+                <!-- 反馈区域 -->
+                <div class="feedback" id="feedback">
+                    <p>选择正确答案，学习鸟类知识！</p>
+                </div>
+
+                <!-- 控制按钮 -->
+                <div class="control-buttons">
+                    <button id="next-btn" class="btn btn-primary">
+                        <i class="fas fa-forward"></i> 下一题
+                    </button>
+                    <button id="hint-btn" class="btn btn-secondary">
+                        <i class="fas fa-lightbulb"></i> 提示
+                    </button>
+                    <button id="restart-btn" class="btn btn-secondary">
+                        <i class="fas fa-redo"></i> 重新开始
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <!-- 鸟类知识卡片 -->
+        <div class="knowledge-cards">
+            <h3><i class="fas fa-book"></i> 鸟类小知识</h3>
+            <div class="cards-container">
+                <div class="card">
+                    <i class="fas fa-feather-alt"></i>
+                    <h4>鸟类特征</h4>
+                    <p>鸟类是唯一有羽毛的动物，体温恒定，前肢演变成翅膀。</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-egg"></i>
+                    <h4>繁殖方式</h4>
+                    <p>鸟类通过产卵繁殖，大多数会筑巢保护卵和雏鸟。</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-utensils"></i>
+                    <h4>食物习性</h4>
+                    <p>不同鸟类食性各异，有食虫、食谷、食肉、食果等类型。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 游戏说明 -->
+        <footer class="game-footer">
+            <div class="instructions">
+                <h4><i class="fas fa-info-circle"></i> 游戏说明</h4>
+                <ul>
+                    <li>观察鸟类图片，从4个选项中选择正确的鸟名</li>
+                    <li>答对得10分，答错不得分</li>
+                    <li>每完成10题进入下一关卡</li>
+                    <li>使用"提示"按钮可以获得帮助</li>
+                    <li>60秒内完成越多题目得分越高</li>
+                </ul>
+            </div>
+            <div class="creator">
+                <p>🐱 游戏制作：小林 | 🐦 鸟类知识：姐姐</p>
+                <p class="copyright">© 2026 鸟类认知学习游戏 - 和小林一起学知识！</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- 音频元素 -->
+    <audio id="correct-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-correct-answer-tone-2870.mp3" preload="auto"></audio>
+    <audio id="wrong-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3" preload="auto"></audio>
+    <audio id="bird-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-bird-chirping-1246.mp3" preload="auto"></audio>
+
+    <script src="game.js"></script>
+</body>
+</html>
