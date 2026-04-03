@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐦 鸟类认知学习游戏 - Gitee Pages版</title>
+    <meta name="description" content="免费鸟类认知学习游戏，通过游戏学习鸟类知识，适合所有年龄段">
+    <meta name="keywords" content="鸟类游戏,学习游戏,认知游戏,鸟类知识,教育游戏">
+    <meta name="author" content="小林 🐱 为姐姐精心制作">
+
+    <!-- 图标 -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <!-- 字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=ZCOOL+QingKe+HuangYou&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- PWA支持 -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4CAF50">
+
+    <!-- 社交分享 -->
+    <meta property="og:title" content="🐦 鸟类认知学习游戏">
+    <meta property="og:description" content="免费鸟类认知学习游戏，通过游戏学习鸟类知识">
+    <meta property="og:image" content="images/social-share.jpg">
+    <meta property="og:url" content="https://yourusername.gitee.io/bird-quiz-web">
+
+    <!-- 移动端优化 -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <style>
+        /* Gitee Pages专用样式 */
+        .gitee-badge {
+            background: linear-gradient(135deg, #c71d6f 0%, #d09693 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            display: inline-block;
+            margin: 10px 0;
+            box-shadow: 0 4px 12px rgba(199, 29, 111, 0.3);
+        }
+
+        .gitee-link {
+            color: #c71d6f;
+            font-weight: bold;
+            text-decoration: none;
+            border-bottom: 2px solid #c71d6f;
+        }
+
+        .gitee-link:hover {
+            color: #a5185d;
+            border-bottom-color: #a5185d;
+        }
+
+        .deploy-status {
+            background: #f8f9fa;
+            border-left: 4px solid #c71d6f;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航 -->
+    <header class="game-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <h1 class="game-title">🐦 鸟类认知学习游戏</h1>
+                    <p class="game-subtitle">通过游戏学习鸟类知识，寓教于乐</p>
+                </div>
+
+                <div class="header-badges">
+                    <span class="gitee-badge">🚀 Gitee Pages 部署</span>
+                    <span class="badge badge-success">📱 移动端优化</span>
+                    <span class="badge badge-info">🎮 4种游戏模式</span>
+                    <span class="badge badge-warning">🆓 完全免费</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="container">
+        <!-- 部署状态 -->
+        <div class="deploy-status">
+            <h3>✅ 部署状态：Gitee Pages 静态版本</h3>
+            <p>此版本已优化为纯静态网站，无需服务器，可在Gitee Pages上完美运行。</p>
+            <p>访问地址：<a href="https://yourusername.gitee.io/bird-quiz-web" class="gitee-link" target="_blank">https://yourusername.gitee.io/bird-quiz-web</a></p>
+        </div>
+
+        <!-- 游戏介绍 -->
+        <section class="intro-section">
+            <div class="intro-card">
+                <h2>🎯 游戏特色</h2>
+                <div class="features-grid">
+                    <div class="feature">
+                        <div class="feature-icon">🐦</div>
+                        <h3>13种精美鸟类</h3>
+                        <p>包含常见鸟类的高清图片和详细介绍</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🎮</div>
+                        <h3>4种游戏模式</h3>
+                        <p>识别模式、记忆模式、挑战模式、学习模式</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">📱</div>
+                        <h3>响应式设计</h3>
+                        <p>手机、平板、电脑都能完美显示</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">⚡</div>
+                        <h3>快速加载</h3>
+                        <p>优化图片和代码，加载速度快</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 游戏模式选择 -->
+        <section class="game-modes">
+            <h2>🎮 选择游戏模式</h2>
+            <div class="modes-grid">
+                <div class="mode-card" onclick="startGame('identify')">
+                    <div class="mode-icon">🔍</div>
+                    <h3>识别模式</h3>
+                    <p>根据图片识别鸟类名称</p>
+                    <button class="btn btn-primary">开始游戏</button>
+                </div>
+                <div class="mode-card" onclick="startGame('memory')">
+                    <div class="mode-icon">🧠</div>
+                    <h3>记忆模式</h3>
+                    <p>记忆鸟类图片和名称</p>
+                    <button class="btn btn-success">开始游戏</button>
+                </div>
+                <div class="mode-card" onclick="startGame('challenge')">
+                    <div class="mode-icon">🏆</div>
+                    <h3>挑战模式</h3>
+                    <p>限时挑战，测试你的知识</p>
+                    <button class="btn btn-warning">开始游戏</button>
+                </div>
+                <div class="mode-card" onclick="startGame('learn')">
+                    <div class="mode-icon">📚</div>
+                    <h3>学习模式</h3>
+                    <p>浏览学习所有鸟类知识</p>
+                    <button class="btn btn-info">开始学习</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 快速开始 -->
+        <section class="quick-start">
+            <div class="quick-start-card">
+                <h2>🚀 快速开始游戏</h2>
+                <p>点击下方按钮立即开始游戏，无需注册，完全免费！</p>
+                <button class="btn btn-lg btn-primary" onclick="startGame('identify')">
+                    🎮 立即开始游戏
+                </button>
+                <p class="small-text">推荐使用 Chrome、Edge 或 Safari 浏览器</p>
+            </div>
+        </section>
+
+        <!-- 技术说明 -->
+        <section class="tech-info">
+            <h2>🛠️ 技术说明</h2>
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <h3>📁 文件结构</h3>
+                    <ul>
+                        <li><code>gitee-index.html</code> - 主页面</li>
+                        <li><code>css/</code> - 样式文件</li>
+                        <li><code>js/</code> - JavaScript文件</li>
+                        <li><code>images/</code> - 鸟类图片</li>
+                        <li><code>birds/</code> - 鸟类数据</li>
+                    </ul>
+                </div>
+                <div class="tech-card">
+                    <h3>⚙️ 技术栈</h3>
+                    <ul>
+                        <li>HTML5 + CSS3</li>
+                        <li>原生JavaScript</li>
+                        <li>响应式设计</li>
+                        <li>PWA支持</li>
+                        <li>本地存储</li>
+                    </ul>
+                </div>
+                <div class="tech-card">
+                    <h3>📱 兼容性</h3>
+                    <ul>
+                        <li>Chrome 60+ ✅</li>
+                        <li>Firefox 55+ ✅</li>
+                        <li>Safari 11+ ✅</li>
+                        <li>Edge 79+ ✅</li>
+                        <li>iOS 11+ ✅</li>
+                        <li>Android 7+ ✅</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 部署指南 -->
+        <section class="deploy-guide">
+            <h2>📦 Gitee Pages 部署指南</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>注册Gitee账号</h3>
+                        <p>访问 <a href="https://gitee.com" target="_blank">gitee.com</a> 注册账号</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>创建仓库</h3>
+                        <p>新建仓库，名称建议：<code>bird-quiz-web</code></p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>上传文件</h3>
+                        <p>将所有文件上传到仓库根目录</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>开启Pages</h3>
+                        <p>在仓库设置中开启Gitee Pages服务</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>访问网站</h3>
+                        <p>访问：<code>https://你的用户名.gitee.io/bird-quiz-web</code></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="game-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <h3>🐦 鸟类认知学习游戏</h3>
+                    <p>一个有趣的教育游戏，帮助大家学习鸟类知识</p>
+                    <p class="copyright">© 2026 小林 🐱 为姐姐精心制作 | 保留所有权利</p>
+                </div>
+                <div class="footer-right">
+                    <div class="footer-links">
+                        <a href="https://gitee.com" target="_blank" class="gitee-link">Gitee 主页</a>
+                        <a href="mailto:for-sister@example.com">联系作者</a>
+                        <a href="#" onclick="showFeedback()">意见反馈</a>
+                        <a href="README-public.md" target="_blank">项目文档</a>
+                    </div>
+                    <div class="social-links">
+                        <span>分享到：</span>
+                        <button class="social-btn" onclick="shareToWechat()">微信</button>
+                        <button class="social-btn" onclick="shareToQQ()">QQ</button>
+                        <button class="social-btn" onclick="shareToWeibo()">微博</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>🆓 本游戏完全免费，仅供学习使用 | 🐱 技术支持：小林 | 📧 反馈邮箱：for-sister@example.com</p>
+                <p class="gitee-powered">由 <a href="https://gitee.com" target="_blank" class="gitee-link">Gitee Pages</a> 强力驱动</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 游戏容器（隐藏） -->
+    <div id="game-container" class="game-container" style="display: none;">
+        <!-- 游戏内容将通过JavaScript动态加载 -->
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/game-logic-public.js"></script>
+    <script src="js/public-features.js"></script>
+
+    <!-- Gitee Pages专用脚本 -->
+    <script>
+        // 游戏启动函数
+        function startGame(mode) {
+            // 隐藏主页面
+            document.querySelector('main').style.display = 'none';
+            document.querySelector('footer').style.display = 'none';
+
+            // 显示游戏容器
+            const gameContainer = document.getElementById('game-container');
+            gameContainer.style.display = 'block';
+
+            // 启动游戏
+            if (typeof startBirdGame === 'function') {
+                startBirdGame(mode);
+            } else {
+                // 如果游戏逻辑未加载，显示简单版本
+                gameContainer.innerHTML = `
+                    <div class="simple-game">
+                        <h2>🎮 ${getModeName(mode)} 模式</h2>
+                        <p>游戏加载中...</p>
+                        <button class="btn btn-secondary" onclick="backToHome()">返回首页</button>
+                    </div>
+                `;
+            }
+        }
+
+        function getModeName(mode) {
+            const modes = {
+                'identify': '识别',
+                'memory': '记忆',
+                'challenge': '挑战',
+                'learn': '学习'
+            };
+            return modes[mode] || '游戏';
+        }
+
+        function backToHome() {
+            document.getElementById('game-container').style.display = 'none';
+            document.querySelector('main').style.display = 'block';
+            document.querySelector('footer').style.display = 'block';
+        }
+
+        function showFeedback() {
+            alert('感谢您的反馈！请发送邮件至 for-sister@example.com');
+        }
+
+        // 社交分享函数
+        function shareToWechat() {
+            alert('请使用微信扫描二维码分享');
+        }
+
+        function shareToQQ() {
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent('🐦 鸟类认知学习游戏');
+            window.open(`https://connect.qq.com/widget/shareqq/index.html?url=${url}&title=${title}`, '_blank');
+        }
+
+        function shareToWeibo() {
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent('🐦 鸟类认知学习游戏 - 免费鸟类认知学习游戏');
+            window.open(`https://service.weibo.com/share/share.php?url=${url}&title=${title}`, '_blank');
+        }
+
+        // 页面加载完成
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🐦 鸟类认知学习游戏 - Gitee Pages版已加载');
+            console.log('🐱 制作：小林 为 姐姐 精心打造');
+
+            // 显示欢迎消息
+            setTimeout(() => {
+                console.log('🚀 游戏已准备好，点击按钮开始游戏！');
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

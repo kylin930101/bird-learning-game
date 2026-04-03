@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐦 鸟类认知学习游戏 - 公共网页版</title>
+    <meta name="description" content="免费在线鸟类认知学习游戏，探索13种美丽鸟类，通过游戏轻松学习鸟类知识！">
+    <meta name="keywords" content="鸟类游戏,鸟类学习,在线游戏,教育游戏,鸟类认知">
+    <meta property="og:title" content="🐦 鸟类认知学习游戏 - 公共网页版">
+    <meta property="og:description" content="免费在线鸟类认知学习游戏，探索13种美丽鸟类！">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630/4CAF50/FFFFFF?text=鸟类认知学习游戏">
+    <meta property="og:url" content="https://bird-game.example.com">
+    <link rel="stylesheet" href="css/bird-learning.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐦</text></svg>">
+    <!-- Google Analytics 示例 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXX-Y"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-XXXXX-Y');
+    </script>
+</head>
+<body>
+    <!-- 浮动的小鸟图标 -->
+    <div class="bird-float" style="top: 10%; left: 5%; animation-delay: 0s;">🐦</div>
+    <div class="bird-float" style="top: 20%; right: 10%; animation-delay: -5s;">🦆</div>
+    <div class="bird-float" style="bottom: 30%; left: 15%; animation-delay: -10s;">🦜</div>
+    <div class="bird-float" style="bottom: 20%; right: 20%; animation-delay: -15s;">🦢</div>
+
+    <div class="container">
+        <!-- 头部 -->
+        <header class="header">
+            <h1><i class="fas fa-dove"></i> 鸟类认知学习游戏 <i class="fas fa-kiwi-bird"></i></h1>
+            <p>探索13种美丽鸟类的奇妙世界，通过游戏轻松学习鸟类知识！</p>
+            <div class="bird-counter">
+                <i class="fas fa-feather-alt"></i> 共收录 13 种鸟类
+            </div>
+            <div class="online-counter">
+                <i class="fas fa-users"></i> 在线玩家: <span id="onlineCount">1</span>
+            </div>
+        </header>
+
+        <!-- 分享按钮 -->
+        <div class="share-buttons">
+            <button class="share-btn" onclick="shareGame('wechat')">
+                <i class="fab fa-weixin"></i> 微信分享
+            </button>
+            <button class="share-btn" onclick="shareGame('qq')">
+                <i class="fab fa-qq"></i> QQ分享
+            </button>
+            <button class="share-btn" onclick="shareGame('link')">
+                <i class="fas fa-link"></i> 复制链接
+            </button>
+        </div>
+
+        <!-- 游戏模式选择 -->
+        <section class="game-modes">
+            <div class="mode-card" onclick="startGame('learn')">
+                <div class="mode-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <h3>学习模式</h3>
+                <p>浏览所有鸟类图片，学习它们的名称、特征和习性。适合初学者入门。</p>
+                <div class="mode-tag">轻松学习</div>
+            </div>
+
+            <div class="mode-card" onclick="startGame('identify')">
+                <div class="mode-icon">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+                <h3>识别模式</h3>
+                <p>看图猜鸟名！测试你对鸟类的识别能力，提升观察力。</p>
+                <div class="mode-tag">挑战认知</div>
+            </div>
+
+            <div class="mode-card" onclick="startGame('memory')">
+                <div class="mode-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>记忆模式</h3>
+                <p>经典翻牌游戏！匹配相同的鸟类图片，锻炼记忆力和反应速度。</p>
+                <div class="mode-tag">记忆训练</div>
+            </div>
+
+            <div class="mode-card" onclick="startGame('challenge')">
+                <div class="mode-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h3>挑战模式</h3>
+                <p>限时答题挑战！在时间内回答尽可能多的问题，争夺最高分。</p>
+                <div class="mode-tag">高手对决</div>
+            </div>
+        </section>
+
+        <!-- 排行榜 -->
+        <section class="leaderboard">
+            <h2><i class="fas fa-crown"></i> 今日排行榜</h2>
+            <div class="leaderboard-list">
+                <div class="leaderboard-item">
+                    <span class="rank">🥇</span>
+                    <span class="player">小明</span>
+                    <span class="score">980分</span>
+                </div>
+                <div class="leaderboard-item">
+                    <span class="rank">🥈</span>
+                    <span class="player">小红</span>
+                    <span class="score">850分</span>
+                </div>
+                <div class="leaderboard-item">
+                    <span class="rank">🥉</span>
+                    <span class="player">小华</span>
+                    <span class="score">720分</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 游戏区域 -->
+        <section id="gameArea" class="game-area">
+            <!-- 游戏内容由JavaScript动态生成 -->
+        </section>
+
+        <!-- 控制按钮 -->
+        <div class="controls">
+            <button class="btn btn-secondary" onclick="backToMenu()">
+                <i class="fas fa-home"></i> 返回主菜单
+            </button>
+            <button class="btn btn-primary" onclick="restartGame()">
+                <i class="fas fa-redo"></i> 重新开始
+            </button>
+            <button class="btn btn-success" onclick="saveScore()">
+                <i class="fas fa-save"></i> 保存成绩
+            </button>
+        </div>
+
+        <!-- 底部 -->
+        <footer class="footer">
+            <p>🆓 完全免费 | 📱 手机电脑都能玩 | 🌐 无需下载</p>
+            <p>所有图片仅供学习使用，请勿用于商业用途</p>
+            <div class="creator">
+                制作：<i class="fas fa-heart"></i> 小林 为 姐姐 精心打造
+            </div>
+            <div class="contact">
+                <a href="mailto:contact@example.com"><i class="fas fa-envelope"></i> 联系我们</a> |
+                <a href="#" onclick="showFeedback()"><i class="fas fa-comment"></i> 反馈建议</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- 反馈弹窗 -->
+    <div id="feedbackModal" class="modal">
+        <div class="modal-content">
+            <h3><i class="fas fa-comment"></i> 反馈建议</h3>
+            <textarea id="feedbackText" placeholder="请输入您的宝贵建议..."></textarea>
+            <button class="btn btn-primary" onclick="submitFeedback()">提交反馈</button>
+            <button class="btn btn-secondary" onclick="closeFeedback()">关闭</button>
+        </div>
+    </div>
+
+    <script src="js/game-logic-public.js"></script>
+    <script src="js/public-features.js"></script>
+</body>
+</html>

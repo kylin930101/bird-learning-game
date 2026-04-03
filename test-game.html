@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐦 游戏功能测试 - 鸟类学习游戏</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #e0f7fa 0%, #bbdefb 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #1565c0;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+        }
+
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8fdff;
+            border-radius: 15px;
+            border: 2px solid #e3f2fd;
+        }
+
+        .test-section h2 {
+            color: #1565c0;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .test-result {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 8px;
+            background: #f5f5f5;
+        }
+
+        .test-result.pass {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .test-result.fail {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        .status-icon {
+            font-size: 1.2rem;
+        }
+
+        .game-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .bird-preview {
+            text-align: center;
+            padding: 10px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .bird-preview img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+
+        .bird-preview span {
+            font-size: 0.9rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .instructions {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+
+        .instructions h3 {
+            color: #1565c0;
+            margin-bottom: 15px;
+        }
+
+        .instructions ol {
+            margin-left: 20px;
+            line-height: 1.8;
+        }
+
+        .instructions li {
+            margin-bottom: 10px;
+        }
+
+        .start-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #4fc3f7, #29b6f6);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .start-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(41, 182, 246, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🐦 鸟类学习游戏 - 功能测试</h1>
+
+        <div class="test-section">
+            <h2>📁 文件完整性检查</h2>
+            <div id="fileTestResults">
+                <!-- 由JavaScript动态生成 -->
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>🖼️ 鸟类图片预览</h2>
+            <div class="game-preview" id="birdPreview">
+                <!-- 由JavaScript动态生成 -->
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>🎮 游戏模式测试</h2>
+            <div id="gameModeTest">
+                <!-- 由JavaScript动态生成 -->
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h3>🚀 如何启动游戏</h3>
+            <ol>
+                <li><strong>方法一（推荐）</strong>: 双击运行 <code>启动游戏.bat</code> 文件</li>
+                <li><strong>方法二</strong>: 在命令行中运行 <code>python start-server.py</code></li>
+                <li><strong>方法三</strong>: 直接双击 <code>index.html</code> 在浏览器中打开（部分功能可能受限）</li>
+                <li>服务器启动后，在浏览器中访问: <code>http://localhost:8000</code></li>
+                <li><strong>手机访问</strong>: 确保手机和电脑在同一WiFi网络，然后在手机浏览器中访问电脑的IP地址和端口8000</li>
+            </ol>
+        </div>
+
+        <a href="index.html" class="start-btn">🎮 立即开始游戏！</a>
+    </div>
+
+    <script>
+        // 鸟类数据（从主游戏文件中复制）
+        const birds = [
+            { name: "凤头潜鸭", image: "birds/凤头潜鸭.png" },
+            { name: "凤头麦鸡", image: "birds/凤头麦鸡.png" },
+            { name: "反嘴鹬", image: "birds/反嘴鹬.png" },
+            { name: "斑头秋沙鸭", image: "birds/斑头秋沙鸭.png" },
+            { name: "普通秋沙鸭", image: "birds/普通秋沙鸭.png" },
+            { name: "环颈雉", image: "birds/环颈雉.png" },
+            { name: "短嘴豆雁", image: "birds/短嘴豆雁.png" },
+            { name: "红嘴鸥", image: "birds/红嘴鸥.png" },
+            { name: "红头潜鸭", image: "birds/红头潜鸭.png" },
+            { name: "红胸秋沙鸭", image: "birds/红胸秋沙鸭.png" },
+            { name: "豆雁", image: "birds/豆雁.png" },
+            { name: "赤嘴潜鸭", image: "birds/赤嘴潜鸭.png" },
+            { name: "鹊鸭", image: "birds/鹊鸭.png" }
+        ];
+
+        // 必需的文件列表
+        const requiredFiles = [
+            'index.html',
+            'css/bird-learning.css',
+            'js/game-logic.js',
+            'birds/凤头潜鸭.png',
+            'birds/凤头麦鸡.png',
+            'birds/反嘴鹬.png',
+            'birds/斑头秋沙鸭.png',
+            'birds/普通秋沙鸭.png',
+            'birds/环颈雉.png',
+            'birds/短嘴豆雁.png',
+            'birds/红嘴鸥.png',
+            'birds/红头潜鸭.png',
+            'birds/红胸秋沙鸭.png',
+            'birds/豆雁.png',
+            'birds/赤嘴潜鸭.png',
+            'birds/鹊鸭.png'
+        ];
+
+        // 游戏模式列表
+        const gameModes = [
+            { name: '学习模式', icon: '📚', desc: '浏览所有鸟类图片和信息' },
+            { name: '识别模式', icon: '🔍', desc: '看图猜鸟名，测试识别能力' },
+            { name: '记忆模式', icon: '🧠', desc: '翻牌配对游戏，锻炼记忆力' },
+            { name: '挑战模式', icon: '🏆', desc: '限时答题挑战，争夺最高分' }
+        ];
+
+        // 测试文件完整性
+        function testFileIntegrity() {
+            const resultsDiv = document.getElementById('fileTestResults');
+            let allPassed = true;
+            let resultsHTML = '';
+
+            requiredFiles.forEach(file => {
+                const img = new Image();
+                const isImage = file.endsWith('.png');
+                let passed = false;
+
+                if (isImage) {
+                    img.onload = () => {
+                        passed = true;
+                        updateResult(file, passed);
+                    };
+                    img.onerror = () => {
+                        passed = false;
+                        allPassed = false;
+                        updateResult(file, passed);
+                    };
+                    img.src = file;
+                } else {
+                    // 对于非图片文件，使用fetch检查
+                    fetch(file)
+                        .then(response => {
+                            passed = response.ok;
+                            if (!passed) allPassed = false;
+                            updateResult(file, passed);
+                        })
+                        .catch(() => {
+                            passed = false;
+                            allPassed = false;
+                            updateResult(file, passed);
+                        });
+                }
+
+                function updateResult(filename, success) {
+                    const existing = document.querySelector(`[data-file="${filename}"]`);
+                    if (existing) {
+                        existing.className = `test-result ${success ? 'pass' : 'fail'}`;
+                        existing.innerHTML = `
+                            <span class="status-icon">${success ? '✅' : '❌'}</span>
+                            <span>${filename} ${success ? '存在' : '缺失'}</span>
+                        `;
+                    }
+                }
+
+                resultsHTML += `
+                    <div class="test-result" data-file="${file}">
+                        <span class="status-icon">⏳</span>
+                        <span>${file} 检查中...</span>
+                    </div>
+                `;
+            });
+
+            resultsDiv.innerHTML = resultsHTML;
+
+            // 添加总结
+            setTimeout(() => {
+                const summary = document.createElement('div');
+                summary.className = `test-result ${allPassed ? 'pass' : 'fail'}`;
+                summary.innerHTML = `
+                    <span class="status-icon">${allPassed ? '🎉' : '⚠️'}</span>
+                    <span><strong>${allPassed ? '所有文件检查通过！' : '部分文件缺失或无法访问'}</strong></span>
+                `;
+                resultsDiv.appendChild(summary);
+            }, 1000);
+        }
+
+        // 显示鸟类预览
+        function showBirdPreview() {
+            const previewDiv = document.getElementById('birdPreview');
+            previewDiv.innerHTML = birds.map(bird => `
+                <div class="bird-preview">
+                    <img src="${bird.image}" alt="${bird.name}" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\"><rect width=\"100\" height=\"100\" fill=\"%23e3f2fd\"/><text x=\"50\" y=\"50\" font-family=\"Arial\" font-size=\"12\" fill=\"%231565c0\" text-anchor=\"middle\" dy=\".3em\">${bird.name}</text></svg>'">
+                    <span>${bird.name}</span>
+                </div>
+            `).join('');
+        }
+
+        // 显示游戏模式测试
+        function showGameModeTest() {
+            const testDiv = document.getElementById('gameModeTest');
+            testDiv.innerHTML = gameModes.map(mode => `
+                <div class="test-result pass">
+                    <span class="status-icon">${mode.icon}</span>
+                    <div>
+                        <strong>${mode.name}</strong><br>
+                        <small>${mode.desc}</small>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 页面加载完成后执行测试
+        document.addEventListener('DOMContentLoaded', () => {
+            testFileIntegrity();
+            showBirdPreview();
+            showGameModeTest();
+
+            console.log('🐦 游戏测试页面已加载！');
+            console.log('📱 游戏支持：电脑、手机、平板浏览器');
+            console.log('🎮 游戏模式：学习、识别、记忆、挑战');
+            console.log('👩‍💻 制作：小林 🐱 为姐姐精心打造');
+        });
+    </script>
+</body>
+</html>

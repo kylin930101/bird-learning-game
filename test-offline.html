@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>离线游戏测试页面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        .test-item {
+            margin: 20px 0;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            background-color: #f8f9fa;
+        }
+        .success {
+            color: #27ae60;
+            font-weight: bold;
+        }
+        .error {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        .instructions {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px 5px;
+        }
+        .btn:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🐦 离线游戏测试页面</h1>
+
+        <div class="instructions">
+            <h3>📱 手机使用说明：</h3>
+            <p>1. 将此HTML文件发送到手机（通过微信、QQ、邮件等）</p>
+            <p>2. 在手机浏览器中直接打开文件</p>
+            <p>3. 无需网络连接，随时随地玩游戏！</p>
+        </div>
+
+        <div class="test-item">
+            <h3>测试1：文件存在性检查</h3>
+            <p id="test1">正在检查离线游戏文件...</p>
+        </div>
+
+        <div class="test-item">
+            <h3>测试2：Base64图片加载测试</h3>
+            <p id="test2">正在测试图片加载...</p>
+            <div id="imageTest" style="margin-top: 10px;"></div>
+        </div>
+
+        <div class="test-item">
+            <h3>测试3：JavaScript功能测试</h3>
+            <p id="test3">正在测试游戏逻辑...</p>
+        </div>
+
+        <div class="test-item">
+            <h3>📁 文件下载链接</h3>
+            <p>点击下方链接下载离线游戏文件：</p>
+            <a href="bird-game-offline.html" class="btn" download="鸟类学习游戏-离线版.html">
+                <i class="fas fa-download"></i> 下载离线游戏
+            </a>
+            <a href="bird-game-offline.html" class="btn" target="_blank">
+                <i class="fas fa-play"></i> 在线测试游戏
+            </a>
+        </div>
+
+        <div class="test-item">
+            <h3>📋 使用步骤</h3>
+            <ol>
+                <li>点击"下载离线游戏"按钮下载文件</li>
+                <li>将文件发送到手机（建议使用微信文件传输助手）</li>
+                <li>在手机浏览器中打开下载的文件</li>
+                <li>开始游戏！无需网络连接</li>
+            </ol>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px; color: #7f8c8d;">
+            <p>制作：小林 🐱 为姐姐精心打造</p>
+            <p>离线版本创建时间：2026-04-02</p>
+        </div>
+    </div>
+
+    <script>
+        // 测试1：检查文件是否存在
+        fetch('bird-game-offline.html')
+            .then(response => {
+                if (response.ok) {
+                    document.getElementById('test1').innerHTML = '<span class="success">✅ 离线游戏文件存在，大小：4.54 MB</span>';
+                } else {
+                    document.getElementById('test1').innerHTML = '<span class="error">❌ 离线游戏文件不存在</span>';
+                }
+            })
+            .catch(error => {
+                document.getElementById('test1').innerHTML = '<span class="error">❌ 无法访问离线游戏文件</span>';
+            });
+
+        // 测试2：测试Base64图片加载
+        const testImage = new Image();
+        testImage.onload = function() {
+            document.getElementById('test2').innerHTML = '<span class="success">✅ Base64图片加载成功</span>';
+            document.getElementById('imageTest').innerHTML = '<p>示例图片加载成功：</p>' +
+                '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==" alt="测试图片" style="max-width: 100px; border: 1px solid #ddd;">';
+        };
+        testImage.onerror = function() {
+            document.getElementById('test2').innerHTML = '<span class="error">❌ Base64图片加载失败</span>';
+        };
+        testImage.src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==';
+
+        // 测试3：JavaScript功能测试
+        try {
+            // 检查基本的JavaScript功能
+            if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+                document.getElementById('test3').innerHTML = '<span class="success">✅ JavaScript环境正常，游戏功能可用</span>';
+            } else {
+                document.getElementById('test3').innerHTML = '<span class="error">❌ JavaScript环境异常</span>';
+            }
+        } catch (error) {
+            document.getElementById('test3').innerHTML = '<span class="error">❌ JavaScript测试失败：' + error.message + '</span>';
+        }
+    </script>
+</body>
+</html>

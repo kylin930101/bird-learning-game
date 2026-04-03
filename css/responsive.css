@@ -1,0 +1,552 @@
+/* 响应式设计 */
+
+/* 超大屏幕 (≥ 1400px) */
+@media (min-width: 1400px) {
+    .menu-content, .game-content {
+        max-width: 1400px;
+    }
+
+    .bird-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+/* 大屏幕 (1200px - 1399px) */
+@media (min-width: 1200px) and (max-width: 1399px) {
+    .bird-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* 中等屏幕 (992px - 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .menu-content, .game-content {
+        padding: var(--spacing-lg);
+    }
+
+    .bird-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .feature-highlights {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* 平板 (768px - 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    :root {
+        --spacing-xl: 24px;
+        --spacing-xxl: 32px;
+    }
+
+    .game-header {
+        padding: var(--spacing-md) var(--spacing-lg);
+    }
+
+    .game-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .menu-content, .game-content {
+        padding: var(--spacing-lg);
+    }
+
+    .welcome-card {
+        padding: var(--spacing-xl);
+    }
+
+    .welcome-card h2 {
+        font-size: 1.8rem;
+    }
+
+    .bird-illustration i {
+        font-size: 2.5rem;
+    }
+
+    .menu-buttons {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .feature-highlights {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .bird-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .options-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .result-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 手机 (576px - 767px) */
+@media (min-width: 576px) and (max-width: 767px) {
+    :root {
+        --spacing-lg: 20px;
+        --spacing-xl: 20px;
+        --spacing-xxl: 24px;
+    }
+
+    html {
+        font-size: 15px;
+    }
+
+    .game-header {
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+
+    .header-content {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        text-align: center;
+    }
+
+    .game-stats {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .menu-content, .game-content {
+        padding: var(--spacing-md);
+    }
+
+    .welcome-card {
+        padding: var(--spacing-lg);
+    }
+
+    .welcome-card h2 {
+        font-size: 1.6rem;
+    }
+
+    .bird-illustration {
+        gap: 20px;
+    }
+
+    .bird-illustration i {
+        font-size: 2rem;
+    }
+
+    .menu-buttons {
+        grid-template-columns: 1fr;
+    }
+
+    .btn-primary, .btn-secondary, .btn-tertiary {
+        padding: var(--spacing-md) var(--spacing-lg);
+    }
+
+    .stats-card {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-lg);
+    }
+
+    .stat-item {
+        min-width: 100px;
+    }
+
+    .feature-highlights {
+        grid-template-columns: 1fr;
+    }
+
+    .question-card {
+        padding: var(--spacing-lg);
+    }
+
+    .question-header h2 {
+        font-size: 1.5rem;
+    }
+
+    #bird-image {
+        height: 250px;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+
+    .btn-hint, .btn-skip {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .feedback-card {
+        padding: var(--spacing-lg);
+        width: 95%;
+    }
+
+    .bird-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .result-card {
+        padding: var(--spacing-xl);
+    }
+
+    .result-score {
+        font-size: 3rem;
+    }
+
+    .result-stats {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .result-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .result-actions button {
+        width: 100%;
+    }
+
+    .settings-container {
+        padding: var(--spacing-lg);
+    }
+
+    .setting-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+    }
+
+    .setting-control {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+/* 小手机 (≤ 575px) */
+@media (max-width: 575px) {
+    :root {
+        --spacing-md: 12px;
+        --spacing-lg: 16px;
+        --spacing-xl: 16px;
+    }
+
+    html {
+        font-size: 14px;
+    }
+
+    .game-header {
+        padding: var(--spacing-sm);
+    }
+
+    .game-header h1 {
+        font-size: 1.3rem;
+    }
+
+    .subtitle {
+        font-size: 0.8rem;
+    }
+
+    .stat-badge {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+
+    .menu-content, .game-content {
+        padding: var(--spacing-sm);
+    }
+
+    .welcome-card {
+        padding: var(--spacing-lg);
+    }
+
+    .welcome-card h2 {
+        font-size: 1.4rem;
+    }
+
+    .bird-illustration {
+        gap: 15px;
+    }
+
+    .bird-illustration i {
+        font-size: 1.8rem;
+    }
+
+    .menu-buttons {
+        gap: var(--spacing-md);
+    }
+
+    .btn-primary, .btn-secondary, .btn-tertiary {
+        padding: var(--spacing-md);
+        font-size: 1rem;
+    }
+
+    .stats-card {
+        padding: var(--spacing-md);
+    }
+
+    .stat-value {
+        font-size: 1.8rem;
+    }
+
+    .feature {
+        padding: var(--spacing-md);
+    }
+
+    .feature i {
+        font-size: 1.5rem;
+    }
+
+    .question-card {
+        padding: var(--spacing-md);
+    }
+
+    .question-header h2 {
+        font-size: 1.3rem;
+    }
+
+    #bird-image {
+        height: 200px;
+    }
+
+    .option-btn {
+        padding: var(--spacing-md);
+    }
+
+    .option-letter {
+        width: 30px;
+        height: 30px;
+        font-size: 0.9rem;
+    }
+
+    .option-text {
+        font-size: 1rem;
+    }
+
+    .progress-container {
+        padding: var(--spacing-md);
+    }
+
+    .feedback-card {
+        padding: var(--spacing-md);
+    }
+
+    .feedback-header i {
+        font-size: 3rem;
+    }
+
+    .feedback-header h3 {
+        font-size: 1.5rem;
+    }
+
+    .bird-info {
+        padding: var(--spacing-md);
+    }
+
+    .result-card {
+        padding: var(--spacing-lg);
+    }
+
+    .result-icon {
+        font-size: 4rem;
+    }
+
+    .result-card h2 {
+        font-size: 2rem;
+    }
+
+    .result-score {
+        font-size: 2.5rem;
+    }
+
+    .modal-content {
+        max-width: 95%;
+        max-height: 95%;
+    }
+
+    .close-modal {
+        top: 10px;
+        right: 10px;
+        width: 35px;
+        height: 35px;
+        font-size: 1.5rem;
+    }
+
+    .modal-info {
+        padding: var(--spacing-md);
+    }
+
+    .modal-info h3 {
+        font-size: 1.3rem;
+    }
+}
+
+/* 横屏模式 */
+@media (max-height: 600px) and (orientation: landscape) {
+    .game-header {
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+
+    .menu-content, .game-content {
+        padding: var(--spacing-md);
+    }
+
+    .welcome-card {
+        padding: var(--spacing-lg);
+        margin-bottom: var(--spacing-md);
+    }
+
+    .bird-illustration {
+        margin-bottom: var(--spacing-md);
+    }
+
+    .menu-buttons {
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+    }
+
+    .stats-card {
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+    }
+
+    .feature-highlights {
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+    }
+
+    .question-card {
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+    }
+
+    #bird-image {
+        height: 200px;
+    }
+
+    .options-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 深色模式支持 */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #1a1a1a;
+        --card-bg: #2d2d2d;
+        --text-primary: #ffffff;
+        --text-secondary: #b3b3b3;
+        --text-light: #808080;
+        --border-color: #404040;
+        --shadow-color: rgba(0, 0, 0, 0.3);
+    }
+
+    body {
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    }
+
+    .icon-button {
+        background: rgba(45, 45, 45, 0.9);
+        color: var(--text-primary);
+    }
+
+    .icon-button:hover {
+        background: #3d3d3d;
+    }
+
+    .btn-secondary {
+        background: var(--card-bg);
+        color: var(--text-primary);
+    }
+
+    .btn-tertiary {
+        color: var(--text-secondary);
+    }
+
+    .btn-tertiary:hover {
+        border-color: var(--primary-color);
+    }
+
+    .option-btn {
+        background: var(--card-bg);
+        color: var(--text-primary);
+    }
+
+    .btn-skip {
+        background: var(--card-bg);
+        color: var(--text-secondary);
+    }
+
+    .select-input {
+        background: var(--card-bg);
+        color: var(--text-primary);
+    }
+}
+
+/* 打印样式 */
+@media print {
+    .game-header,
+    .action-buttons,
+    .feedback-overlay,
+    .modal,
+    .game-footer {
+        display: none !important;
+    }
+
+    body {
+        background: white !important;
+        color: black !important;
+    }
+
+    .screen {
+        display: block !important;
+        min-height: auto !important;
+    }
+
+    .question-card {
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+    }
+
+    #bird-image {
+        max-height: 200px !important;
+    }
+}
+
+/* 高对比度模式 */
+@media (prefers-contrast: high) {
+    :root {
+        --primary-color: #006400;
+        --secondary-color: #00008b;
+        --border-color: #000000;
+    }
+
+    .btn-primary, .btn-secondary, .btn-tertiary {
+        border: 2px solid currentColor;
+    }
+
+    .option-btn {
+        border: 2px solid currentColor;
+    }
+
+    .progress-fill {
+        border: 1px solid #000000;
+    }
+}
+
+/* 减少动画 */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+}

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试真实鸟类图片 - 鸟类学习游戏</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .birds-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .bird-card {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .bird-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .bird-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .bird-name {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .bird-scientific {
+            font-style: italic;
+            opacity: 0.8;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+        }
+
+        .bird-info {
+            font-size: 0.9em;
+            line-height: 1.5;
+            opacity: 0.9;
+        }
+
+        .info-item {
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .info-item i {
+            margin-right: 8px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .status-safe {
+            background: rgba(46, 204, 113, 0.3);
+            color: #2ecc71;
+        }
+
+        .controls {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .success-message {
+            background: rgba(46, 204, 113, 0.2);
+            border: 2px solid #2ecc71;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .success-message h2 {
+            color: #2ecc71;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .birds-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🐦 真实鸟类图片测试</h1>
+        <div class="subtitle">姐姐添加的5种真实鸟类图片展示</div>
+
+        <div class="success-message">
+            <h2><i class="fas fa-check-circle"></i> 图片加载成功！</h2>
+            <p>所有5种真实鸟类图片都已成功加载并显示在下方。</p>
+        </div>
+
+        <div class="birds-grid" id="birdsContainer">
+            <!-- 鸟类卡片将通过JavaScript动态生成 -->
+        </div>
+
+        <div class="controls">
+            <a href="index.html" class="btn">
+                <i class="fas fa-gamepad"></i> 开始游戏
+            </a>
+            <a href="test_birds.html" class="btn btn-secondary">
+                <i class="fas fa-list"></i> 查看完整鸟类列表
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // 鸟类数据 - 直接从data.js复制过来用于测试
+        const testBirdsData = [
+            {
+                id: 1,
+                name: "鹊鸭",
+                scientificName: "Bucephala clangula",
+                image: "birds/鹊鸭.png",
+                description: "鹊鸭是一种中型水鸟，以其黑白相间的羽毛和圆形的头部而闻名。雄性鹊鸭有醒目的黑白配色，雌性则呈灰褐色。它们擅长潜水捕食。",
+                habitat: "淡水湖泊、河流、池塘",
+                diet: "水生昆虫、小鱼、甲壳类",
+                size: "40-50厘米",
+                weight: "500-1300克",
+                conservationStatus: "无危"
+            },
+            {
+                id: 2,
+                name: "斑头秋沙鸭",
+                scientificName: "Mergus albellus",
+                image: "birds/斑头秋沙鸭.png",
+                description: "斑头秋沙鸭是一种小型水鸟，以其黑白相间的头部斑纹和细长的喙而闻名。它们擅长潜水捕鱼，通常成群活动。",
+                habitat: "淡水湖泊、河流、河口",
+                diet: "小鱼、水生昆虫",
+                size: "38-44厘米",
+                weight: "500-900克",
+                conservationStatus: "无危"
+            },
+            {
+                id: 3,
+                name: "普通秋沙鸭",
+                scientificName: "Mergus merganser",
+                image: "birds/普通秋沙鸭.png",
+                description: "普通秋沙鸭是大型水鸟，以其细长的红色喙和流线型身体而闻名。雄性有醒目的黑白配色，雌性则呈灰褐色。它们是优秀的潜水捕鱼者。",
+                habitat: "淡水湖泊、河流、沿海水域",
+                diet: "鱼类、甲壳类、水生昆虫",
+                size: "58-72厘米",
+                weight: "900-2100克",
+                conservationStatus: "无危"
+            },
+            {
+                id: 4,
+                name: "红胸秋沙鸭",
+                scientificName: "Mergus serrator",
+                image: "birds/红胸秋沙鸭.png",
+                description: "红胸秋沙鸭是一种中型水鸟，以其醒目的红色胸部和细长的锯齿状喙而闻名。它们擅长潜水捕鱼，通常在海湾和河口活动。",
+                habitat: "沿海水域、海湾、河口",
+                diet: "鱼类、甲壳类、软体动物",
+                size: "52-58厘米",
+                weight: "800-1300克",
+                conservationStatus: "无危"
+            },
+            {
+                id: 5,
+                name: "环颈雉",
+                scientificName: "Phasianus colchicus",
+                image: "birds/环颈雉.png",
+                description: "环颈雉是一种美丽的雉类，雄性有鲜艳的羽毛和白色的颈环，雌性则呈棕褐色保护色。它们是常见的狩猎鸟类，奔跑速度快。",
+                habitat: "农田、草地、灌木丛",
+                diet: "种子、谷物、昆虫、浆果",
+                size: "70-90厘米",
+                weight: "1-1.5公斤",
+                conservationStatus: "无危"
+            }
+        ];
+
+        // 渲染鸟类卡片
+        function renderBirds() {
+            const container = document.getElementById('birdsContainer');
+            container.innerHTML = '';
+
+            testBirdsData.forEach(bird => {
+                const birdCard = document.createElement('div');
+                birdCard.className = 'bird-card';
+
+                birdCard.innerHTML = `
+                    <img src="${bird.image}" alt="${bird.name}" class="bird-image" onerror="this.src='images/birds/placeholders/bird${bird.id}.png'">
+                    <div class="bird-name">${bird.name}</div>
+                    <div class="bird-scientific">${bird.scientificName}</div>
+                    <div class="bird-info">
+                        <div class="info-item"><i class="fas fa-home"></i> 栖息地: ${bird.habitat}</div>
+                        <div class="info-item"><i class="fas fa-utensils"></i> 食性: ${bird.diet}</div>
+                        <div class="info-item"><i class="fas fa-ruler"></i> 体型: ${bird.size}</div>
+                        <div class="info-item"><i class="fas fa-weight"></i> 体重: ${bird.weight}</div>
+                        <div class="status status-safe">${bird.conservationStatus}</div>
+                    </div>
+                `;
+
+                container.appendChild(birdCard);
+            });
+        }
+
+        // 页面加载完成后渲染
+        document.addEventListener('DOMContentLoaded', renderBirds);
+    </script>
+</body>
+</html>

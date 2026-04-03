@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鸟类学习游戏 🐦 - 认识鸟类，保护自然</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/game.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+</head>
+<body>
+    <!-- 加载动画 -->
+    <div id="loading" class="loading-screen">
+        <div class="loading-content">
+            <div class="bird-loader">
+                <i class="fas fa-dove"></i>
+                <i class="fas fa-crow"></i>
+                <i class="fas fa-kiwi-bird"></i>
+            </div>
+            <p>正在加载鸟类数据...</p>
+        </div>
+    </div>
+
+    <!-- 主菜单 -->
+    <div id="main-menu" class="screen active">
+        <header class="game-header">
+            <div class="header-content">
+                <h1><i class="fas fa-feather-alt"></i> 鸟类学习游戏</h1>
+                <p class="subtitle">认识鸟类，保护自然 🐦</p>
+            </div>
+        </header>
+
+        <main class="menu-content">
+            <div class="welcome-card">
+                <div class="bird-illustration">
+                    <i class="fas fa-kiwi-bird"></i>
+                    <i class="fas fa-dove"></i>
+                    <i class="fas fa-crow"></i>
+                </div>
+                <h2>欢迎来到鸟类世界！</h2>
+                <p>通过有趣的游戏学习鸟类知识，提高对自然的认识。</p>
+            </div>
+
+            <div class="menu-buttons">
+                <button id="start-game" class="btn-primary">
+                    <i class="fas fa-play"></i> 开始游戏
+                </button>
+                <button id="learn-mode" class="btn-secondary">
+                    <i class="fas fa-book"></i> 学习模式
+                </button>
+                <button id="bird-encyclopedia" class="btn-secondary">
+                    <i class="fas fa-feather"></i> 鸟类图鉴
+                </button>
+                <button id="settings" class="btn-tertiary">
+                    <i class="fas fa-cog"></i> 设置
+                </button>
+            </div>
+
+            <div class="stats-card">
+                <div class="stat-item">
+                    <span class="stat-label">最高分</span>
+                    <span id="high-score" class="stat-value">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">已学习</span>
+                    <span id="birds-learned" class="stat-value">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">正确率</span>
+                    <span id="accuracy-rate" class="stat-value">0%</span>
+                </div>
+            </div>
+
+            <div class="feature-highlights">
+                <div class="feature">
+                    <i class="fas fa-gamepad"></i>
+                    <h3>游戏模式</h3>
+                    <p>通过图片识别鸟类</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>学习模式</h3>
+                    <p>详细鸟类知识</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-trophy"></i>
+                    <h3>成就系统</h3>
+                    <p>解锁鸟类图鉴</p>
+                </div>
+            </div>
+        </main>
+
+        <footer class="game-footer">
+            <p>© 2025 鸟类学习游戏 | 设计：小林 | 指导：姐姐</p>
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-weibo"></i></a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- 游戏界面 -->
+    <div id="game-screen" class="screen">
+        <div class="game-header">
+            <div class="header-content">
+                <button id="back-to-menu" class="back-button">
+                    <i class="fas fa-arrow-left"></i> 返回
+                </button>
+                <div class="game-stats">
+                    <div class="stat-badge">
+                        <i class="fas fa-star"></i>
+                        <span id="current-score">0</span>
+                    </div>
+                    <div class="stat-badge">
+                        <i class="fas fa-question-circle"></i>
+                        <span id="question-number">1/10</span>
+                    </div>
+                    <div class="stat-badge">
+                        <i class="fas fa-clock"></i>
+                        <span id="timer">60</span>s
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <main class="game-content">
+            <div class="question-card">
+                <div class="question-header">
+                    <h2>这是什么鸟？</h2>
+                    <p class="question-hint">从以下选项中选择正确的鸟类名称</p>
+                </div>
+
+                <div class="bird-image-container">
+                    <div class="image-wrapper">
+                        <img id="bird-image" src="images/birds/sparrow.jpg" alt="鸟类图片">
+                        <div class="image-overlay">
+                            <button id="zoom-image" class="icon-button">
+                                <i class="fas fa-search-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="image-info">
+                        <p><i class="fas fa-info-circle"></i> 点击图片可以放大查看</p>
+                    </div>
+                </div>
+
+                <div class="options-container">
+                    <div class="options-grid">
+                        <button class="option-btn" data-index="0">
+                            <span class="option-letter">A</span>
+                            <span class="option-text">麻雀</span>
+                        </button>
+                        <button class="option-btn" data-index="1">
+                            <span class="option-letter">B</span>
+                            <span class="option-text">燕子</span>
+                        </button>
+                        <button class="option-btn" data-index="2">
+                            <span class="option-letter">C</span>
+                            <span class="option-text">鸽子</span>
+                        </button>
+                        <button class="option-btn" data-index="3">
+                            <span class="option-letter">D</span>
+                            <span class="option-text">喜鹊</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="hint-btn" class="btn-hint">
+                        <i class="fas fa-lightbulb"></i> 提示
+                    </button>
+                    <button id="skip-btn" class="btn-skip">
+                        <i class="fas fa-forward"></i> 跳过
+                    </button>
+                </div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div id="progress-fill" class="progress-fill"></div>
+                </div>
+                <div class="progress-labels">
+                    <span>进度</span>
+                    <span id="progress-text">10%</span>
+                </div>
+            </div>
+        </main>
+
+        <div class="feedback-overlay" id="feedback-overlay">
+            <div class="feedback-card">
+                <div class="feedback-header">
+                    <i id="feedback-icon" class="fas fa-check-circle"></i>
+                    <h3 id="feedback-title">回答正确！</h3>
+                </div>
+                <div class="feedback-content">
+                    <p id="feedback-message">太棒了！你认出了这是麻雀。</p>
+                    <div class="bird-info">
+                        <h4><i class="fas fa-feather"></i> 鸟类知识</h4>
+                        <p id="bird-knowledge">麻雀（Passer montanus）是常见的小型鸟类，广泛分布于世界各地。</p>
+                    </div>
+                </div>
+                <button id="next-question" class="btn-primary">
+                    <i class="fas fa-arrow-right"></i> 下一题
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 学习模式 -->
+    <div id="learn-screen" class="screen">
+        <!-- 学习模式内容 -->
+    </div>
+
+    <!-- 鸟类图鉴 -->
+    <div id="encyclopedia-screen" class="screen">
+        <!-- 图鉴内容 -->
+    </div>
+
+    <!-- 设置界面 -->
+    <div id="settings-screen" class="screen">
+        <!-- 设置内容 -->
+    </div>
+
+    <!-- 游戏结束界面 -->
+    <div id="game-over-screen" class="screen">
+        <!-- 游戏结束内容 -->
+    </div>
+
+    <!-- 图片放大模态框 -->
+    <div id="image-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <img id="modal-image" src="" alt="放大图片">
+            <div class="modal-info">
+                <h3 id="modal-bird-name">鸟类名称</h3>
+                <p id="modal-bird-scientific">学名</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 音频播放器 -->
+    <audio id="correct-sound" src="sounds/correct.mp3" preload="auto"></audio>
+    <audio id="wrong-sound" src="sounds/wrong.mp3" preload="auto"></audio>
+    <audio id="click-sound" src="sounds/click.mp3" preload="auto"></audio>
+
+    <script src="js/game.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/utils.js"></script>
+</body>
+</html>
